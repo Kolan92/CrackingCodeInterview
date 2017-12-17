@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace ArraysAndStrings
 {
@@ -49,6 +50,36 @@ namespace ArraysAndStrings
                                 .OrderBy(c => c);
 
             return stringArray.SequenceEqual(otherStringArray);
+        }
+
+        public static string Compress(string @string)
+        {
+            ValidateInput(@string);
+
+            var stringArray = @string.ToCharArray();
+            if(!stringArray.Any())
+                return @string;
+
+            var currentChar = stringArray[0];
+            var compressedBuilder = new StringBuilder();
+            var counter = 0;
+            foreach (var @char in stringArray)
+            {
+                if(@char == currentChar)
+                    counter ++;
+                else
+                {
+                    compressedBuilder.Append($"{currentChar}{counter}");
+                    currentChar = @char;
+                    counter = 1;
+                }
+            }
+            compressedBuilder.Append($"{currentChar}{counter}");
+            
+            var compressedString = compressedBuilder.ToString();
+            return compressedString.Length < @string.Length
+                    ? compressedString
+                    : @string;
         }
 
         private static void ValidateInput(string @string)
