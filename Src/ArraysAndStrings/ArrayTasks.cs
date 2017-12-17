@@ -82,6 +82,15 @@ namespace ArraysAndStrings
                     : @string;
         }
 
+        public static bool IsRotated(string rotated, string toCompare)
+        {
+            ValidateInput(rotated);
+            ValidateInput(toCompare);
+
+            var concatenatedRotatedString =rotated + rotated;
+            return concatenatedRotatedString.Contains(toCompare);
+        }
+
         private static void ValidateInput(string @string)
         {
             if(@string == null)
