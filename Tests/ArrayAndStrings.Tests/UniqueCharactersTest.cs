@@ -3,7 +3,7 @@ using NUnit.Framework;
 using FluentAssertions;
 using System;
 
-namespace Tests
+namespace ArrayAndStrings.Tests
 {
     public class UniqueCharactersTest
     {
