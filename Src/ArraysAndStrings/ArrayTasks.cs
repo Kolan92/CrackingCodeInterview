@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ArraysAndStrings
 {
@@ -34,6 +35,20 @@ namespace ArraysAndStrings
             }
 
             return new string(stringArray);
+        }
+
+        public static bool IsPermutation(string @string, string other)
+        {
+            ValidateInput(@string);
+            ValidateInput(other);
+            
+            var stringArray = @string.ToCharArray()
+                                .OrderBy(c => c);
+            
+            var otherStringArray = other.ToCharArray()
+                                .OrderBy(c => c);
+
+            return stringArray.SequenceEqual(otherStringArray);
         }
 
         private static void ValidateInput(string @string)
